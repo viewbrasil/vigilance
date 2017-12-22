@@ -69,7 +69,8 @@ fs.readFile('./application/includes/startup.txt', function(err, file) {
 
   }
 
-  log.info(" Devmind.io local utilities is running at port " + port);
+  log.info(" Devmind.io vigilance is running at port " + port);
+  log.info(" Vigilance is watching your files at " + args.path);
   log.info(" To shut down, press <CTRL> + C at any time.");
   console.log('');
 });
@@ -80,8 +81,16 @@ if (typeof args.path !== "undefined") {
 else {
   var command_prepend = "";
 }
-let update = new Updater(command_prepend);
-update.verify_git();
+
+if (typeof args.branch !== "undefined") {
+  var branch = args.branch;
+}
+else {
+  var branch = "master";
+}
+
+let update = new Updater();
+update.verify_git(command_prepend,branch);
 
 /**
  * Event listener for HTTP server "error" event.
