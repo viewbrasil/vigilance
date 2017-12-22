@@ -30,6 +30,7 @@ function timed_check(path)
 function work_on_response(response)
 {
   log.info(response);
+  "klajflksdjfldkjslkd"
   if(response.trim() == '"untracked"')
   {
     log.info('we need to act');
