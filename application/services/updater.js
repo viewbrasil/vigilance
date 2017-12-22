@@ -25,15 +25,19 @@ function timed_check(path)
     shell_exec(path , 'git fetch &&  git diff-index --quiet FETCH_HEAD -- || echo "untracked"', false);
 }
 
-function work_on_response(response,path)
+function work_on_response(response,path,stop)
 {
 
-    //creepy
-  if(response.trim() == '"untracked"')
+  if(stop === false)
   {
-    log.info('updating local files..');
-    shell_exec(path , ' git reset --hard && git pull origin master', true);
+    if(response.trim() == '"untracked"')
+    {
+      log.info('updating local files..');
+      shell_exec(path , ' git reset --hard && git pull origin master', true);
+    }
+      timed_check(path);
   }
+
 }
 
 function shell_exec(path, command, stop)
@@ -42,13 +46,8 @@ function shell_exec(path, command, stop)
 
     if (typeof error != null) {
 
-      work_on_response(stdout,path);
+      work_on_response(stdout,path,stop);
 
     }
-    if(stop === false)
-    {
-      timed_check(path);
-    }
-
   });
 }
