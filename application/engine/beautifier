@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Module dependenciess aquele teste no esquema XD
+ * Module dependencies
  */
 var Updater = require('../services/updater.js');
 var app = require('./app');
