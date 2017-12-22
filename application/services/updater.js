@@ -20,7 +20,7 @@ Updater.prototype.verify_git = function()
   timed_check(path);
 }
 
-//lojetaa
+
 function timed_check(path)
 {
     shell_exec(path , 'git fetch &&  git diff-index --quiet FETCH_HEAD -- || echo "untracked"', false);
@@ -30,15 +30,14 @@ function timed_check(path)
 function work_on_response(response,path,stop)
 {
 
-  if(stop === false)
-  {
     if(response.trim() == '"untracked"')
     {
       log.info('updating local files..');
       shell_exec(path , ' git reset --hard && git pull origin master', true);
     }
+    else {
       timed_check(path);
-  }
+    }
 
 }
 
