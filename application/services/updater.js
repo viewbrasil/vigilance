@@ -27,7 +27,7 @@ function timed_check(path)
     log.info('checking');
 }
 
-//malandragem
+//malandragemm
 function work_on_response(response,path,stop)
 {
 
