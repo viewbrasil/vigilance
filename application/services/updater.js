@@ -25,7 +25,7 @@ function timed_check(path)
 
   setTimeout(function(){
 
-    shell_exec(path , 'git fetch &&  git diff-index --quiet FETCH_HEAD -- || echo "untracked"');
+    shell_exec(path , 'git fetch &&  git diff-index --quiet FETCH_HEAD -- || echo "untracked"', false);
 
    }, 1000);
 }
@@ -44,7 +44,7 @@ function work_on_response(response,path)
   }
 }
 
-function shell_exec(path, command, stop = false)
+function shell_exec(path, command, stop)
 {
   exec(path + command , function(error, stdout, stderr) {
 
