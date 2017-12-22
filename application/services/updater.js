@@ -13,7 +13,7 @@ function Updater(path) {
 this.path = path;
 
 }
-//aquele teste
+
 Updater.prototype.verify_git = function()
 {
   path = this.path;
@@ -24,7 +24,7 @@ function timed_check(path)
 {
   setTimeout(function(){
 
-    shell_exec(path , ' git diff-index --quiet HEAD -- || echo "untracked"');
+    shell_exec(path , 'git fetch &&  git diff-index --quiet FETCH_HEAD -- || echo "untracked"');
     timed_check(path);
 
    }, 1000);
