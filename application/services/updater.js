@@ -11,7 +11,7 @@ var pretty = require('pretty');
 function Updater(path) {
 
 this.path = path;
-
+this.canQuery = true;
 }
 
 Updater.prototype.verify_git = function()
@@ -22,10 +22,10 @@ Updater.prototype.verify_git = function()
 
 function timed_check(path)
 {
+
   setTimeout(function(){
 
     shell_exec(path , 'git fetch &&  git diff-index --quiet FETCH_HEAD -- || echo "untracked"');
-    timed_check(path);
 
    }, 1000);
 }
@@ -37,11 +37,11 @@ function work_on_response(response,path)
   if(response.trim() == '"untracked"')
   {
     log.info(path + 'git reset --hard && git pull origin master')
-    shell_exec(path , ' git reset --hard && git pull origin master');
+    shell_exec(path , ' git reset --hard && git pull origin master', true);
   }
 }
 
-function shell_exec(path, command)
+function shell_exec(path, command, stop = false)
 {
   exec(path + command , function(error, stdout, stderr) {
 
@@ -50,5 +50,10 @@ function shell_exec(path, command)
       work_on_response(stdout,path);
 
     }
+    if(stop === false)
+    {
+      timed_check(path);
+    }
+
   });
 }
