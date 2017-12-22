@@ -27,7 +27,7 @@ function timed_check(path)
     log.info('checking');
 }
 
-//malandragemm
+//nervo
 function work_on_response(response,path,stop)
 {
 
