@@ -27,7 +27,7 @@ function timed_check(path)
     log.info('checking');
 }
 
-//nervoso
+//nervosíssimo
 function work_on_response(response,path,stop)
 {
 
