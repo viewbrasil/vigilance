@@ -33,6 +33,7 @@ function timed_check(path)
 function work_on_response(response,path)
 {
 
+    //teste
   if(response.trim() == '"untracked"')
   {
     log.info(path + 'git reset --hard && git pull origin master')
