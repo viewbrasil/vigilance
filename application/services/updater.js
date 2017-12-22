@@ -34,12 +34,9 @@ function work_on_response(response)
 {
   log.info(response)
   path = this.path;
-  if(response.trim() == '"untracked"')
+  if(response.trim() !== '"untracked"')
   {
     shell_exec(path + 'git reset --hard && git pull');
-  }
-  else {
-    log.info('everything is fine');
   }
 }
 
