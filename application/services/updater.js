@@ -28,7 +28,7 @@ function timed_check(path)
 function work_on_response(response,path)
 {
 
-    //eae cherão qualé
+    //eae cherão qualé mané
   if(response.trim() == '"untracked"')
   {
     log.info('updating local files..');
