@@ -1,4 +1,4 @@
-//This library contains some functions meant to be reused across the entire project
+//This library contains some functions meant to be reused across the entire projecttt
 module.exports = Utils;
 var utf8 = require('utf8');
 var log = require('captains-log')();
