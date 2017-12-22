@@ -22,7 +22,6 @@ function timed_check(path)
   setTimeout(function(){
 
     shell_exec(path + ' git diff-index --quiet HEAD -- || echo "untracked"')
-log.info(path + ' git diff-index --quiet HEAD -- || echo "untracked"');
     timed_check(path);
 
    }, 1000);
