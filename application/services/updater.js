@@ -21,11 +21,22 @@ function timed_check(path)
 {
   setTimeout(function(){
 
-    shell_exec(path + ' git diff-index --quiet HEAD -- || echo "untracked"; ')
-    log.info(path + ' git status && git diff-index --quiet HEAD -- || echo "untracked"; ');
+    shell_exec(path + ' git status --quiet && git diff-index --quiet HEAD -- || echo "untracked"')
     timed_check(path);
 
    }, 1000);
+}
+
+function work_on_response(response)
+{
+  log.info(response);
+  if(response.trim() == '"untracked"')
+  {
+    log.info('we need to act');
+  }
+  else {
+    log.info('everything is fine');
+  }
 }
 
 function shell_exec(command,file,response,func)
@@ -34,7 +45,8 @@ function shell_exec(command,file,response,func)
 
     if (typeof error != null) {
 
-        log.info(stdout)
+      work_on_response(stdout);
+
     }
   });
 }
