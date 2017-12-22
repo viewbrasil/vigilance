@@ -39,7 +39,7 @@ function work_on_response(response,path,stop)
     else {
       if(stop == true)
       {
-        log.info('Update sucessfull');
+        log.info('Update successful');
       }
       timed_check(path);
     }
