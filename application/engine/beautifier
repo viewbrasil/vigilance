@@ -79,8 +79,8 @@ if (typeof args.path !== "undefined") {
 else {
   var command_prepend = "";
 }
-let update = new Updater();
-update.verify_git(command_prepend);
+let update = new Updater(command_prepend);
+update.verify_git();
 
 /**
  * Event listener for HTTP server "error" event.

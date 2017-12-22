@@ -24,30 +24,29 @@ function timed_check(path)
 {
   setTimeout(function(){
 
-    shell_exec(path + ' git diff-index --quiet HEAD -- || echo "untracked"')
+    shell_exec(path , ' git diff-index --quiet HEAD -- || echo "untracked"');
     timed_check(path);
 
    }, 1000);
 }
 
-function work_on_response(response)
+function work_on_response(response,path)
 {
-  log.info(response)
-  path = this.path;
+
   if(response.trim() == '"untracked"')
   {
-    log.info('we gotta act');
-    shell_exec(path + 'git reset --hard && git pull');
+    log.info(path + 'git reset --hard && git pull')
+    shell_exec(path , ' git reset --hard && git pull');
   }
 }
 
-function shell_exec(command,file,response,func)
+function shell_exec(path, command)
 {
-  exec(command , function(error, stdout, stderr) {
+  exec(path + command , function(error, stdout, stderr) {
 
     if (typeof error != null) {
 
-      work_on_response(stdout);
+      work_on_response(stdout,path);
 
     }
   });
