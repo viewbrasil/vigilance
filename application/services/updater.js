@@ -34,10 +34,6 @@ function work_on_response(response,path)
     log.info('updating local files..');
     shell_exec(path , ' git reset --hard && git pull origin master', true);
   }
-  else
-  {
-    log.info('no need to update');
-  }
 }
 
 function shell_exec(path, command, stop)
