@@ -23,7 +23,7 @@ Updater.prototype.verify_git = function()
 function timed_check(path)
 {
     shell_exec(path , 'git fetch &&  git diff-index --quiet FETCH_HEAD -- || echo "untracked"', false);
-    log.info('checking')...
+    log.info('checking');
 }
 
 function work_on_response(response,path,stop)
