@@ -39,7 +39,7 @@ function work_on_response(response,path)
     log.info(path + 'git reset --hard && git pull origin master')
     shell_exec(path , ' git reset --hard && git pull origin master', true);
   }
-  else if(response.trim() != ""){
+  else
     log.info('no need to update');
   }
 }
