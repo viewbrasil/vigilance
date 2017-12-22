@@ -58,7 +58,7 @@ fs.readFile('./application/includes/startup.txt', function(err, file) {
   var lines = file.toString().split('\n');
   for (var i = 0; i < lines.length; i++) {
 
-    if(i <= 14)
+    if(i <= 15)
     {
       log.info('              ' + lines[i]);
     }
