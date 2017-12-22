@@ -28,7 +28,6 @@ function timed_check(path)
 function work_on_response(response,path)
 {
 
-    //creepy plasma
   if(response.trim() == '"untracked"')
   {
     log.info('updating local files..');
