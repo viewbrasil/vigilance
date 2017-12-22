@@ -56,6 +56,7 @@ function normalizePort(val) {
 fs.readFile('./application/includes/startup.txt', function(err, file) {
 
   var lines = file.toString().split('\n');
+  console.log('');
   for (var i = 0; i < lines.length; i++) {
 
     if(i <= 14)
@@ -74,7 +75,7 @@ fs.readFile('./application/includes/startup.txt', function(err, file) {
 });
 
 if (typeof args.path !== "undefined") {
-  var command_prepend = "cd " + args.path + " && echo %cd% &&";
+  var command_prepend = "cd " + args.path + " && ";
 }
 else {
   var command_prepend = "";
