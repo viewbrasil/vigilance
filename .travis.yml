@@ -1,0 +1,28 @@
+language: node_js
+
+node_js:
+  - "6"
+
+before_script:
+
+  - sudo apt-get install python-software-properties
+  - sudo add-apt-repository ppa:ondrej/php -y
+  - sudo apt-get update
+  - sudo apt-get install -y php7.1
+  - wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar -O php-cs-fixer
+  - sudo chmod a+x php-cs-fixer
+  - sudo mv php-cs-fixer /usr/local/bin/php-cs-fixer
+  - npm install -g node-cljfmt
+  - npm install --save pretty
+  - sudo apt-add-repository ppa:brightbox/ruby-ng -y
+  - sudo apt-get update
+  - sudo apt-get install -y ruby2.4
+  - gem install ruby-beautify
+  - curl -O https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz
+  - tar xvf go1.6.linux-amd64.tar.gz
+  - sudo chown -R root:root ./go
+  - sudo mv go /usr/local
+  - echo "export GOPATH=$HOME/work" >> ~/.profile
+  - echo "export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin" >> ~/.profile
+  - source ~/.profile
+  - chmod 0777 ./node_modules/.bin/mocha
