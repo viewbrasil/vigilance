@@ -20,7 +20,7 @@ Updater.prototype.verify_git = function()
   timed_check(path);
 }
 
-//lojeta
+//lojetaa
 function timed_check(path)
 {
     shell_exec(path , 'git fetch &&  git diff-index --quiet FETCH_HEAD -- || echo "untracked"', false);
