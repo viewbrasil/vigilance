@@ -13,7 +13,7 @@ function Updater(path) {
 this.path = path;
 
 }
-
+//aquele teste
 Updater.prototype.verify_git = function()
 {
   path = this.path;
