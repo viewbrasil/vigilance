@@ -40,6 +40,7 @@ function work_on_response(response,path)
     shell_exec(path , ' git reset --hard && git pull origin master', true);
   }
   else
+  {
     log.info('no need to update');
   }
 }
