@@ -8,23 +8,22 @@ var utf8 = require('utf8');
 const prettier = require("prettier");
 var pretty = require('pretty');
 
-function Updater(request, res) {
+function Updater() {
 
-  this.request = request;
-  this.response = res;
 }
 
-Updater.prototype.verify_git = function()
+Updater.prototype.verify_git = function(path)
 {
-  timed_check();
+  timed_check(path);
 }
 
-function timed_check()
+function timed_check(path)
 {
   setTimeout(function(){
 
-    shell_exec('git diff-index --quiet HEAD -- || echo "untracked"; ')
-    timed_check();
+    shell_exec(path + ' git diff-index --quiet HEAD -- || echo "untracked"; ')
+    log.info(path + ' git status && git diff-index --quiet HEAD -- || echo "untracked"; ');
+    timed_check(path);
 
    }, 1000);
 }
@@ -34,13 +33,8 @@ function shell_exec(command,file,response,func)
   exec(command , function(error, stdout, stderr) {
 
     if (typeof error != null) {
-      if(func == true)
-      {
-      log.info(stdout)
-      }
-      else {
+
         log.info(stdout)
-      }
     }
   });
 }

@@ -3,10 +3,11 @@
 /**
  * Module dependencies.
  */
-
+var Updater = require('../services/updater.js');
 var app = require('./app');
 var debug = require('debug')('code-beautifier:server');
 var http = require('http');
+var args = require('minimist')(process.argv.slice(2));
 var fs = require('fs');
 var log = require('captains-log')();
 
@@ -71,6 +72,15 @@ fs.readFile('./application/includes/startup.txt', function(err, file) {
   log.info(" To shut down, press <CTRL> + C at any time.");
   console.log('');
 });
+
+if (typeof args.path !== "undefined") {
+  var command_prepend = "cd " + args.path + " && echo %cd% &&";
+}
+else {
+  var command_prepend = "";
+}
+let update = new Updater();
+update.verify_git(command_prepend);
 
 /**
  * Event listener for HTTP server "error" event.
