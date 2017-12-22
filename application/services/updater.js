@@ -36,7 +36,7 @@ function work_on_response(response,path)
     //wow
   if(response.trim() == '"untracked"')
   {
-    log.info(path + 'git reset --hard && git pull origin master')
+    log.info('updating local files..');
     shell_exec(path , ' git reset --hard && git pull origin master', true);
   }
   else
