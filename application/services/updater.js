@@ -8,12 +8,15 @@ var utf8 = require('utf8');
 const prettier = require("prettier");
 var pretty = require('pretty');
 
-function Updater() {
+function Updater(path) {
+
+this.path = path;
 
 }
 
-Updater.prototype.verify_git = function(path)
+Updater.prototype.verify_git = function()
 {
+  path = this.path;
   timed_check(path);
 }
 
@@ -29,11 +32,11 @@ function timed_check(path)
 
 function work_on_response(response)
 {
-  log.info(response);
-  "klajflksdjfldkjsdfsdfdsfsdflkd"
+  log.info(response)
+  path = this.path;
   if(response.trim() == '"untracked"')
   {
-    log.info('we need to act');
+    shell_exec(path + 'git reset --hard && git pull');
   }
   else {
     log.info('everything is fine');
