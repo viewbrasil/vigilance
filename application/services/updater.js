@@ -35,8 +35,8 @@ function work_on_response(response,path)
 
   if(response.trim() == '"untracked"')
   {
-    log.info(path + 'git reset --hard && git pull')
-    shell_exec(path , ' git reset --hard && git pull');
+    log.info(path + 'git reset --hard && git pull origin master')
+    shell_exec(path , ' git reset --hard && git pull origin master');
   }
 }
 
