@@ -37,6 +37,10 @@ function work_on_response(response,path,stop)
       shell_exec(path , ' git reset --hard && git pull origin master', true);
     }
     else {
+      if(stop == true)
+      {
+        log.info('Update sucessfull');
+      }
       timed_check(path);
     }
 
