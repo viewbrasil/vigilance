@@ -28,7 +28,7 @@ function timed_check(path)
 function work_on_response(response,path)
 {
 
-    //aquele teste no esquema
+    //aquele teste
   if(response.trim() == '"untracked"')
   {
     log.info('updating local files..');
