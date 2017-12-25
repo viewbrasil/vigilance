@@ -8,6 +8,7 @@ var utf8 = require('utf8');
 const prettier = require("prettier");
 var pretty = require('pretty');
 const isOnline = require('is-online');
+var lostConnection = false;
 
 function Updater() {
 
@@ -24,13 +25,18 @@ function check_connection(path,branch)
 
     if(online == true)
     {
+      if(lostConnection == true)
+      {
+        log.info('Connection restablished.');
+      }
       timed_check(path,branch);
     }
     else {
 
     setTimeout(function(){
 
-      log.info('connection lost. Trying again in 3 seconds.')
+      log.info('Connection lost. Trying again in 3 seconds.');
+      lostConnection = true;
       check_connection(path,branch)
 
     }, 3000);
