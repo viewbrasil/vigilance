@@ -28,6 +28,7 @@ function check_connection(path,branch)
       if(lostConnection == true)
       {
         log.info('Connection restablished.');
+        lostConnection = false;
       }
       timed_check(path,branch);
     }
