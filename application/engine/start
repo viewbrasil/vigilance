@@ -15,7 +15,13 @@ var log = require('captains-log')();
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+ if (typeof args.port === "undefined") {
+   port = 3000;
+ } else {
+   port = args.port;
+ }
+ var port = normalizePort(port);
+
 app.set('port', port);
 
 /**
