@@ -30,7 +30,7 @@ function check_connection(path,branch)
 
     setTimeout(function(){
 
-      log.warning('connection lost. Trying again in 3 seconds.')
+      log.info('connection lost. Trying again in 3 seconds.')
       check_connection(path,branch)
 
     }, 3000);
@@ -58,7 +58,7 @@ function work_on_response(response,path,stop,branch)
       {
         log.info('Update successful');
       }
-      timed_check(path,branch);
+      check_connection(path,branch);
     }
 
 }
