@@ -11,8 +11,6 @@ if (typeof args.path !== "undefined") {
     for (var i = 0; i < lines.length; i++) {
       log.info(lines[i]);
     }
-    
-    //hahaha
 
     log.info(" Devmind.io Vigilance is watching your files at " + args.path);
     log.info(" To shut down, press <CTRL> + C at any time.");
