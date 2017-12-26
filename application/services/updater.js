@@ -3,10 +3,12 @@ var exec = require("child_process").exec;
 var log = require("captains-log")();
 const isOnline = require("is-online");
 var lostConnection = false;
+var commands = null;
 
 function Updater() {}
 
-Updater.prototype.verify_git = function(path, branch) {
+Updater.prototype.verify_git = function(path, branch, command) {
+  commands = command;
   check_connection(path, branch);
 };
 
@@ -40,13 +42,18 @@ function timed_check(path, branch) {
 function work_on_response(response, path, stop, branch) {
   if (response.trim() == '"untracked"') {
     log.info("updating local files..");
+    exec_str = " git reset --hard origin/" + branch + " && git pull origin " + branch
+    if(commands !== null)
+    {
+      commands.forEach(function(object,index){
+
+        exec_str = exec_str + " && " + object
+      });
+    }
+    console.log(exec_str);
     shell_exec(
       path,
-      " git reset --hard origin/" +
-        branch +
-        " && git pull origin " +
-        branch +
-        " && pm2 stop start.js && pm2 start start.js",
+      exec_str,
       true,
       branch
     );

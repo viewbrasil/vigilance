@@ -18,6 +18,16 @@ if (typeof args.path !== "undefined") {
     console.log("");
   });
 
+  if (typeof args.command !== "undefined") {
+    var command = args.command;
+    if(typeof command !== "array")
+    {
+      command = [];
+      command.push(args.command);
+    }
+  } else {
+    var command = null;
+  }
 
   if (typeof args.branch !== "undefined") {
     var branch = args.branch;
@@ -26,7 +36,7 @@ if (typeof args.path !== "undefined") {
   }
 
   let update = new Updater();
-  update.verify_git(command_prepend, branch);
+  update.verify_git(command_prepend, branch,command);
 
 
 } else {
