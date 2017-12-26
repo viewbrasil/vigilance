@@ -12,7 +12,7 @@ if (typeof args.path !== "undefined") {
       log.info(lines[i]);
     }
     
-    //
+    //lala
 
     log.info(" Devmind.io Vigilance is watching your files at " + args.path);
     log.info(" To shut down, press <CTRL> + C at any time.");
