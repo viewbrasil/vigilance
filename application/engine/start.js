@@ -12,8 +12,7 @@ if (typeof args.path !== "undefined") {
       log.info(lines[i]);
     }
 
-    log.info(" Devmind.io vigilance is running");
-    log.info(" Vigilance is watching your files at " + args.path);
+    log.info(" Devmind.io Vigilance is watching your files at " + args.path);
     log.info(" To shut down, press <CTRL> + C at any time.");
     console.log("");
   });
@@ -21,8 +20,7 @@ if (typeof args.path !== "undefined") {
   if (typeof args.command !== "undefined") {
     var command = args.command;
 
-    if(typeof command !== "object")
-    {
+    if (typeof command !== "object") {
       command = [];
       command.push(args.command);
     }
@@ -37,10 +35,8 @@ if (typeof args.path !== "undefined") {
   }
 
   let update = new Updater();
-  update.verify_git(command_prepend, branch,command);
-
-
+  update.verify_git(command_prepend, branch, command);
 } else {
   console.log("");
-  log.warn('Please specify a path. --path /path/to/your/files')
+  log.warn("Please specify a path. --path /path/to/your/files");
 }
