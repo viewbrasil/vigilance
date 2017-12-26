@@ -30,5 +30,6 @@ if (typeof args.path !== "undefined") {
 
 
 } else {
+  console.log("");
   log.warn('Please specify a path. --path /path/to/your/files')
 }
