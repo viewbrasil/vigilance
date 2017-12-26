@@ -18,15 +18,16 @@ fs.readFile("./application/includes/startup.txt", function(err, file) {
 
 if (typeof args.path !== "undefined") {
   var command_prepend = "cd " + args.path + " && ";
-} else {
-  var command_prepend = "";
-}
+  if (typeof args.branch !== "undefined") {
+    var branch = args.branch;
+  } else {
+    var branch = "master";
+  }
 
-if (typeof args.branch !== "undefined") {
-  var branch = args.branch;
-} else {
-  var branch = "master";
-}
+  let update = new Updater();
+  update.verify_git(command_prepend, branch);
 
-let update = new Updater();
-update.verify_git(command_prepend, branch);
+
+} else {
+  log.warn('Please specify a path. --path /path/to/your/files')
+}
