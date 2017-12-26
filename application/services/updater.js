@@ -58,7 +58,7 @@ function work_on_response(response,path,stop,branch)
     if(response.trim() == '"untracked"')
     {
       log.info('updating local files..');
-      shell_exec(path , ' git reset --hard origin/'+branch+' && git pull origin ' + branch + ' && npm stop && npm start', true,branch);
+      shell_exec(path , ' git reset --hard origin/'+branch+' && git pull origin ' + branch + ' && pm2 stop start.js && pm2 start start.js', true,branch);
     }
     else {
       if(stop == true)
