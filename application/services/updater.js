@@ -42,20 +42,15 @@ function timed_check(path, branch) {
 function work_on_response(response, path, stop, branch) {
   if (response.trim() == '"untracked"') {
     log.info("updating local files..");
-    exec_str = " git reset --hard origin/" + branch + " && git pull origin " + branch
-    if(commands !== null)
-    {
-      commands.forEach(function(object,index){
+    exec_str =
+      " git reset --hard origin/" + branch + " && git pull origin " + branch;
+    if (commands !== null) {
+      commands.forEach(function(object, index) {
         log.info("running " + object);
-        exec_str = exec_str + " && " + object
+        exec_str = exec_str + " && " + object;
       });
     }
-    shell_exec(
-      path,
-      exec_str,
-      true,
-      branch
-    );
+    shell_exec(path, exec_str, true, branch);
   } else {
     if (stop == true) {
       log.info("Update successful");
