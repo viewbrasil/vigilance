@@ -20,7 +20,8 @@ if (typeof args.path !== "undefined") {
 
   if (typeof args.command !== "undefined") {
     var command = args.command;
-    if(typeof command !== "array")
+
+    if(typeof command !== "object")
     {
       command = [];
       command.push(args.command);

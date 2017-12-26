@@ -46,11 +46,10 @@ function work_on_response(response, path, stop, branch) {
     if(commands !== null)
     {
       commands.forEach(function(object,index){
-
+        log.info("running " + object);
         exec_str = exec_str + " && " + object
       });
     }
-    console.log(exec_str);
     shell_exec(
       path,
       exec_str,
