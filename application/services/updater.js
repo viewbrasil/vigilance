@@ -7,6 +7,8 @@ var commands = null;
 
 function Updater() {}
 
+//zenyssauro
+
 Updater.prototype.verify_git = function(path, branch, command) {
   commands = command;
   check_connection(path, branch);
