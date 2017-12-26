@@ -1,7 +1,6 @@
 module.exports = Updater;
 var exec = require('child_process').exec;
 var log = require('captains-log')();
-var fs = require('fs');
 const isOnline = require('is-online');
 var lostConnection = false;
 
