@@ -1,12 +1,7 @@
 module.exports = Updater;
-var utilities = require('../helpers/utils.js');
-var utils = new utilities;
 var exec = require('child_process').exec;
 var log = require('captains-log')();
 var fs = require('fs');
-var utf8 = require('utf8');
-const prettier = require("prettier");
-var pretty = require('pretty');
 const isOnline = require('is-online');
 var lostConnection = false;
 
