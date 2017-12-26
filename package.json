@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "captains-log": "latest",
-    "express": "~4.15.5",
     "is-online": "^7.0.0",
     "minimist": "latest"
   },
