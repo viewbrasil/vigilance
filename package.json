@@ -10,6 +10,7 @@
   "dependencies": {
     "captains-log": "latest",
     "is-online": "^7.0.0",
+    "node-notifier": "latest",
     "minimist": "latest"
   },
   "devDependencies": {
