@@ -3,7 +3,7 @@ var exec = require("child_process").exec;
 var log = require("captains-log")();
 const isOnline = require("is-online");
 var lostConnection = false;
-const notifier = require('node-notifier');
+
 var commands = null;
 
 function Updater() {}
@@ -14,6 +14,7 @@ Updater.prototype.verify_git = function(path, branch, command) {
 };
 
 function check_connection(path, branch) {
+
   isOnline().then(online => {
     if (online == true) {
       if (lostConnection == true) {
@@ -48,7 +49,6 @@ function work_on_response(response, path, stop, branch) {
     if (commands !== null) {
       commands.forEach(function(object, index) {
         log.info("running " + object);
-        notifier.notify("running " + object);
         exec_str = exec_str + " && " + object;
       });
     }
@@ -56,7 +56,6 @@ function work_on_response(response, path, stop, branch) {
   } else {
     if (stop == true) {
       log.info("Update successful");
-      notifier.notify('Update successful');
     }
     check_connection(path, branch);
   }

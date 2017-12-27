@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var Updater = require("../services/updater.js");
 var args = require("minimist")(process.argv.slice(2));
 var fs = require("fs");
