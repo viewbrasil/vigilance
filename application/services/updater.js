@@ -3,6 +3,7 @@ var exec = require("child_process").exec;
 var log = require("captains-log")();
 const isOnline = require("is-online");
 var lostConnection = false;
+const notifier = require('node-notifier');
 
 var commands = null;
 
@@ -19,12 +20,14 @@ function check_connection(path, branch) {
     if (online == true) {
       if (lostConnection == true) {
         log.info("Connection restablished.");
+        notifier.notify('Vigilance Connection restablished.');
         lostConnection = false;
       }
       timed_check(path, branch);
     } else {
       setTimeout(function() {
         log.info("Connection lost. Trying again in 3 seconds.");
+        notifier.notify('Vigilance connection lost. Trying again in 3 seconds.');
         lostConnection = true;
         check_connection(path, branch);
       }, 3000);
@@ -56,6 +59,7 @@ function work_on_response(response, path, stop, branch) {
   } else {
     if (stop == true) {
       log.info("Update successful");
+      notifier.notify('Vigilance Update successful');
     }
     check_connection(path, branch);
   }
