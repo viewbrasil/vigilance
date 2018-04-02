@@ -10,9 +10,10 @@
   },
   "dependencies": {
     "captains-log": "latest",
+    "child_process": "^1.0.2",
     "is-online": "^7.0.0",
-    "node-notifier": "latest",
-    "minimist": "latest"
+    "minimist": "latest",
+    "node-notifier": "^5.2.1"
   },
   "devDependencies": {
     "mocha": "^4.0.1"

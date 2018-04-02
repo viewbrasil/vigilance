@@ -11,6 +11,9 @@ function Updater() {}
 
 Updater.prototype.verify_git = function(path, branch, command) {
   commands = command;
+
+
+
   check_connection(path, branch);
 };
 
@@ -36,6 +39,7 @@ function check_connection(path, branch) {
 }
 
 function timed_check(path, branch) {
+
   shell_exec(
     path,
     'git fetch &&  git diff-index --quiet FETCH_HEAD -- || echo "untracked"',
@@ -45,7 +49,9 @@ function timed_check(path, branch) {
 }
 
 function work_on_response(response, path, stop, branch) {
-  if (response.trim() == '"untracked"') {
+
+  branch = "master";
+  if (response.trim() == 'untracked') {
     log.info("updating local files..");
     exec_str =
       " git reset --hard origin/" + branch + " && git pull origin " + branch;
@@ -66,9 +72,12 @@ function work_on_response(response, path, stop, branch) {
 }
 
 function shell_exec(path, command, stop, branch) {
+
   exec(path + command, function(error, stdout, stderr) {
+
     if (typeof error != null) {
-      work_on_response(stdout, path, stop, branch);
+
+      work_on_response(stdout, path, stop,branch);
     }
   });
 }
