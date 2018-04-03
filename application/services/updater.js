@@ -42,7 +42,7 @@ function timed_check(path, branch) {
 
   shell_exec(
     path,
-    'git fetch &&  git diff-index --quiet FETCH_HEAD -- || echo "untracked"',
+    'git fetch &&  git diff ' + branch+' origin/'+branch+' --quiet || echo "untracked"',
     false,
     branch
   );

@@ -2,11 +2,13 @@
 var Updater = require("../services/updater.js");
 var args = require("minimist")(process.argv.slice(2));
 var fs = require("fs");
+var path = require("path");
 var log = require("captains-log")();
 
 if (typeof args.path !== "undefined") {
   var command_prepend = "cd " + args.path + " && ";
-  fs.readFile("./application/includes/startup.txt", function(err, file) {
+
+  fs.readFile(path.resolve(__dirname, '..')+"/includes/startup.txt", function(err, file) {
     var lines = file.toString().split("\n");
     console.log("");
     for (var i = 0; i < lines.length; i++) {
