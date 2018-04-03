@@ -5,7 +5,7 @@
   "bin": "./application/engine/start.js",
   "private": true,
   "scripts": {
-    "start": "node ./application/engine/beautifier",
+    "start": "node ./application/engine/start",
     "test": "mocha tests/**/*_test.js --reporter spec --exit"
   },
   "dependencies": {
