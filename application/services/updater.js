@@ -4,6 +4,7 @@ var log = require("captains-log")();
 const isOnline = require("is-online");
 var lostConnection = false;
 const notifier = require('node-notifier');
+const pathModule = require("path");
 
 var commands = null;
 
@@ -23,14 +24,30 @@ function check_connection(path, branch) {
     if (online == true) {
       if (lostConnection == true) {
         log.info("Connection restablished.");
-        notifier.notify('Vigilance Connection restablished.');
+
+        notifier.notify(
+          {
+            title: 'Devmind Vigilance',
+            message: 'Vigilance Connection restablished.',
+            icon: pathModule.join(pathModule.resolve(__dirname, '..')+"/includes", 'devmind.png'), // Absolute path (doesn't work on balloons)
+            sound: true, // Only Notification Center or Windows Toasters
+            wait: false
+          });
         lostConnection = false;
       }
       timed_check(path, branch);
     } else {
       setTimeout(function() {
         log.info("Connection lost. Trying again in 3 seconds.");
-        notifier.notify('Vigilance connection lost. Trying again in 3 seconds.');
+        notifier.notify(
+          {
+            title: 'Devmind Vigilance',
+            message: 'Vigilance connection lost. Trying again in 3 seconds.',
+            icon: pathModule.join(pathModule.resolve(__dirname, '..')+"/includes", 'devmind.png'), // Absolute path (doesn't work on balloons)
+            sound: true, // Only Notification Center or Windows Toasters
+            wait: false
+          });
+
         lostConnection = true;
         check_connection(path, branch);
       }, 3000);
@@ -65,7 +82,15 @@ function work_on_response(response, path, stop, branch) {
   } else {
     if (stop == true) {
       log.info("Update successful");
-      notifier.notify('Vigilance Update successful');
+      notifier.notify(
+        {
+          title: 'Devmind Vigilance',
+          message: 'Vigilance Update successful.',
+          icon: pathModule.join(pathModule.resolve(__dirname, '..')+"/includes", 'devmind.png'), // Absolute path (doesn't work on balloons)
+          sound: true, // Only Notification Center or Windows Toasters
+          wait: false
+        });
+
     }
     check_connection(path, branch);
   }
