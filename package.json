@@ -1,9 +1,9 @@
 {
-  "name": "vigilance",
-  "version": "1.0.0",
+  "name": "devmind-vigilance",
+  "version": "1.0.1",
   "preferGlobal": true,
   "bin": "./application/engine/start.js",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "node ./application/engine/start",
     "test": "mocha tests/**/*_test.js --reporter spec --exit"

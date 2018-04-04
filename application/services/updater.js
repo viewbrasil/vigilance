@@ -18,36 +18,33 @@ Updater.prototype.verify_git = function(path, branch, command) {
   check_connection(path, branch);
 };
 
+function send_notification(notification_message){
+
+  notifier.notify(
+    {
+      title: 'Devmind Vigilance',
+      message: notification_message,
+      icon: pathModule.join(pathModule.resolve(__dirname, '..')+"/includes", 'devmind.png'), // Absolute path (doesn't work on balloons)
+      sound: true, // Only Notification Center or Windows Toasters
+      wait: false
+    });
+
+}
+
 function check_connection(path, branch) {
 
   isOnline().then(online => {
     if (online == true) {
       if (lostConnection == true) {
         log.info("Connection restablished.");
-
-        notifier.notify(
-          {
-            title: 'Devmind Vigilance',
-            message: 'Vigilance Connection restablished.',
-            icon: pathModule.join(pathModule.resolve(__dirname, '..')+"/includes", 'devmind.png'), // Absolute path (doesn't work on balloons)
-            sound: true, // Only Notification Center or Windows Toasters
-            wait: false
-          });
+        send_notification('Vigilance Connection restablished.');
         lostConnection = false;
       }
       timed_check(path, branch);
     } else {
       setTimeout(function() {
         log.info("Connection lost. Trying again in 3 seconds.");
-        notifier.notify(
-          {
-            title: 'Devmind Vigilance',
-            message: 'Vigilance connection lost. Trying again in 3 seconds.',
-            icon: pathModule.join(pathModule.resolve(__dirname, '..')+"/includes", 'devmind.png'), // Absolute path (doesn't work on balloons)
-            sound: true, // Only Notification Center or Windows Toasters
-            wait: false
-          });
-
+        send_notification('Vigilance connection lost. Trying again in 3 seconds.');
         lostConnection = true;
         check_connection(path, branch);
       }, 3000);
@@ -66,8 +63,7 @@ function timed_check(path, branch) {
 }
 
 function work_on_response(response, path, stop, branch) {
-
-  branch = "master";
+  
   if (response.trim() == 'untracked' || response.trim() == '"untracked"') {
     log.info("updating local files..");
     exec_str =
@@ -82,15 +78,7 @@ function work_on_response(response, path, stop, branch) {
   } else {
     if (stop == true) {
       log.info("Update successful");
-      notifier.notify(
-        {
-          title: 'Devmind Vigilance',
-          message: 'Vigilance Update successful.',
-          icon: pathModule.join(pathModule.resolve(__dirname, '..')+"/includes", 'devmind.png'), // Absolute path (doesn't work on balloons)
-          sound: true, // Only Notification Center or Windows Toasters
-          wait: false
-        });
-
+      send_notification('Vigilance Update successful.');
     }
     check_connection(path, branch);
   }
