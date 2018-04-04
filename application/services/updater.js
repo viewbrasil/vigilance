@@ -51,7 +51,7 @@ function timed_check(path, branch) {
 function work_on_response(response, path, stop, branch) {
 
   branch = "master";
-  if (response.trim() == 'untracked') {
+  if (response.trim() == 'untracked' || response.trim() == '"untracked"') {
     log.info("updating local files..");
     exec_str =
       " git reset --hard origin/" + branch + " && git pull origin " + branch;
