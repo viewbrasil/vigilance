@@ -6,12 +6,6 @@ var path = require("path");
 var log = require("captains-log")();
 
 if (typeof args.path === "undefined") {
-  log.warn(
-    "Path not specified, defaulting to current directory (" +
-      process.cwd() +
-      ")"
-  );
-
   args.path = process.cwd();
 }
 
