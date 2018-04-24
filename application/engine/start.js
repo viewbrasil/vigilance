@@ -6,15 +6,15 @@ var path = require("path");
 var log = require("captains-log")();
 
 if (typeof args.path === "undefined") {
-    
-    log.warn(
+  log.warn(
     "Path not specified, defaulting to current directory (" +
       process.cwd() +
-      ")");
- 
- args.path = process.cwd(); 
+      ")"
+  );
+
+  args.path = process.cwd();
 }
-  
+
 var command_prepend = "cd " + args.path + " && ";
 fs.readFile(path.resolve(__dirname, "..") + "/includes/startup.txt", function(
   err,
