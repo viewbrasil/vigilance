@@ -1,8 +1,6 @@
-
-
 # Devmind Vigilance
 
-> A simple file watcher... For the remote 👀
+> A simple file watcher... For the remotee 👀
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/d2fcf73be12a5b16234c/maintainability)](https://codeclimate.com/github/LukasMeine/vigilance/maintainability)
 [![Maintainability](https://scrutinizer-ci.com/g/LukasMeine/vigilance/badges/build.png?b=master)](https://scrutinizer-ci.com/g/LukasMeine/vigilance/inspections/8fe9c318-a4bd-4158-8cda-f538c8cbaac5/log)
